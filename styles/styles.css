@@ -5,6 +5,13 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'JetbrainsMono';
+	src: url('./assets/JetBrainsMono-VariableFont.ttf') format('truetype');
+	font-weight: 100 900;
+	font-display: swap;
+}
+
 body {
 	margin: 0;
 	overflow: hidden;
@@ -50,16 +57,35 @@ body {
 }
 
 #view-subcontainer {
-	width: calc(100% - 2vw);
-	height: calc(100% - 2vw);
-	-webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
-	-moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
-	box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
+	width: calc(100% - 20vw);
+	height: calc(100% - 5vw);
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.15);
+	box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.15);
 	border-radius: 15px;
 	margin: auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 }
 
 #control-container {
 	flex: 1;
 	background: var(--background-secondary);
+}
+
+#readout {
+	font-family: 'JetBrainsMono', monospace;
+	padding: 1vw;
+	background-color: var(--background-secondary);
+}
+
+#graph-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+#canvas {
+	flex: 1;
 }
