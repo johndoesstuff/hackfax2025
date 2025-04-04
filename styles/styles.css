@@ -12,6 +12,12 @@ body {
 	background: var(--background);
 }
 
+#page-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
 #header {
 	width: auto;
 	background: var(--text);
@@ -31,4 +37,29 @@ body {
 	display: flex;
 	padding: 1vw;
 	font-size: 12px;
+}
+
+#main {
+	flex-grow: 1;
+	display: flex;
+}
+
+#view-container {
+	flex: 3;
+	display: flex;
+}
+
+#view-subcontainer {
+	width: calc(100% - 2vw);
+	height: calc(100% - 2vw);
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
+	-moz-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
+	box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.35);
+	border-radius: 15px;
+	margin: auto;
+}
+
+#control-container {
+	flex: 1;
+	background: var(--background-secondary);
 }
