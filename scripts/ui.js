@@ -5,6 +5,7 @@ function updateCanvasSize() {
 
 	canvas.width = canvas.offsetWidth;
 	canvas.height = canvas.offsetHeight;
+	renderCanvas();
 }
 
 updateCanvasSize();
