@@ -1,3 +1,5 @@
+//
+
 function updateCanvasSize() {
 	const canvas = document.getElementById('canvas');
 
