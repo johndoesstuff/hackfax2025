@@ -12,7 +12,9 @@ const ctx = canvas.getContext("2d");
 const graphColors = {"RED":"#c74440","BLUE":"#2d70b3","GREEN":"#348543","ORANGE":"#fa7e19","PURPLE":"#6042a6","BLACK":"#000000"};
 
 let showAverage = true;
-let averageDepth = 30;
+let averageDepth = 10;
+
+let gridlinesRendered = false;
 
 function updateCanvasReadout(newData) {
 	for (let sensor in newData) {
@@ -23,7 +25,8 @@ function updateCanvasReadout(newData) {
 	updateReadout();
 }
 
-function renderCanvas() {	
+function renderCanvas() {
+	window.gridlinesRendered = false;
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -90,9 +93,37 @@ function renderUI() {
 	ctx.setLineDash([]);
 }
 
+function renderGridlines(xStep, yStep) {
+	if (gridlinesRendered) return;
+	gridlinesRendered = true;
+    // Set gridline color and style
+    ctx.strokeStyle = '#ccc'; // Light gray color for gridlines
+    ctx.lineWidth = 0.5; // Thin lines for grid
+
+    // Draw vertical gridlines
+    for (let x = xStep; x < canvas.width; x += xStep) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0); // Start at the top of the canvas
+        ctx.lineTo(x, canvas.height); // Draw line to the bottom
+        ctx.stroke();
+    }
+
+    // Draw horizontal gridlines
+    for (let y = yStep; y < canvas.height; y += yStep) {
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height-y); // Start at the left of the canvas
+        ctx.lineTo(canvas.width, canvas.height-y); // Draw line to the right
+        ctx.stroke();
+    }
+	ctx.lineWidth = 1;
+}
+
 function graphArray(arr, color, maxValue) {
 	arr = arr.map(e => canvas.height - (e/maxValue * canvas.height));
 	const step = canvas.width/(arr.length-1);
+
+	renderGridlines(step, 5/maxValue * canvas.height);
+
 	ctx.strokeStyle = color;
 
 	ctx.moveTo(0, arr[0]);

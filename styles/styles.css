@@ -72,6 +72,75 @@ body {
 #control-container {
 	flex: 1;
 	background: var(--background-secondary);
+    gap: 10px; /* Adds spacing between all items */
+    padding: 20px;
+    background-color: #f4f4f9; /* Light background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around the container */
+    max-width: 600px; /* Prevents the container from stretching too wide */
+    margin: 0 auto; /* Centers the container horizontally */
+}
+
+#control-container div {
+	padding: 0.5vw;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+h2 {
+	margin: 0;
+}
+
+#control-container button {
+	padding: 8px 16px;
+	background-color: var(--secondary);
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#control-container button:hover {
+	background-color: var(--accent);
+}
+
+#control-container input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    width: 120px; /* Set a fixed width for inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+#control-container input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db; /* Highlight input on focus */
+}
+
+#control-container span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.text-button span {
+	flex: 1;
+}
+
+.text-button input {
+	flex: 3;
+}
+
+.text-button button {
+	flex: 1;
+}
+
+.text-button div {
+	flex: 1;
 }
 
 #readout {
