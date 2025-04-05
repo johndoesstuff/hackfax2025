@@ -1,5 +1,9 @@
 function tare() {
 	console.log("Tare Request");
+	tares.load1 = rawLoads.load1;
+	tares.load2 = rawLoads.load2;
+	tares.load3 = rawLoads.load3;
+	tares.load4 = rawLoads.load4;
 }
 
 function createProfile() {
