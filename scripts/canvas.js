@@ -26,7 +26,7 @@ function updateCanvasReadout(newData) {
 }
 
 function renderCanvas() {
-	window.gridlinesRendered = false;
+	gridlinesRendered = false;
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -96,33 +96,54 @@ function renderUI() {
 function renderGridlines(xStep, yStep) {
 	if (gridlinesRendered) return;
 	gridlinesRendered = true;
-    // Set gridline color and style
-    ctx.strokeStyle = '#ccc'; // Light gray color for gridlines
-    ctx.lineWidth = 0.5; // Thin lines for grid
+	ctx.strokeStyle = '#ccc';
+	ctx.lineWidth = 0.5;
 
-    // Draw vertical gridlines
-    for (let x = xStep; x < canvas.width; x += xStep) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0); // Start at the top of the canvas
-        ctx.lineTo(x, canvas.height); // Draw line to the bottom
-        ctx.stroke();
-    }
+	for (let x = xStep; x < canvas.width; x += xStep) {
+		ctx.beginPath();
+		ctx.moveTo(x, 0);
+		ctx.lineTo(x, canvas.height);
+		ctx.stroke();
+	}
 
-    // Draw horizontal gridlines
-    for (let y = yStep; y < canvas.height; y += yStep) {
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height-y); // Start at the left of the canvas
-        ctx.lineTo(canvas.width, canvas.height-y); // Draw line to the right
-        ctx.stroke();
-    }
+	for (let y = yStep; y < canvas.height; y += yStep) {
+		ctx.beginPath();
+		ctx.moveTo(0, canvas.height-y);
+		ctx.lineTo(canvas.width, canvas.height-y);
+		ctx.stroke();
+	}
 	ctx.lineWidth = 1;
 }
+
+function renderGridLabels(xStep, yStep, xJump, yJump) {
+	ctx.fillStyle = '#666';
+	ctx.font = '12px JetbrainsMono, monospace';
+	ctx.textAlign = 'left';
+	ctx.textBaseline = 'top';
+
+	// X-axis labels (bottom)
+	for (let x = xStep; x < canvas.width; x += xStep) {
+		const value = ((x - 0) / xStep * xJump).toFixed(0);
+		ctx.fillText(value, x - 4, canvas.height + 8);
+	}
+
+	// Y-axis labels (left side, bottom up)
+	ctx.textAlign = 'right';
+	ctx.textBaseline = 'middle';
+
+	for (let y = yStep; y < canvas.height; y += yStep) {
+		const value = ((y / yStep) * yJump).toFixed(0);
+		ctx.fillText(value, - 8, canvas.height - y);
+	}
+}
+
 
 function graphArray(arr, color, maxValue) {
 	arr = arr.map(e => canvas.height - (e/maxValue * canvas.height));
 	const step = canvas.width/(arr.length-1);
 
 	renderGridlines(step, 5/maxValue * canvas.height);
+	renderGridLabels(step, 5/maxValue * canvas.height, 1, 5);
 
 	ctx.strokeStyle = color;
 

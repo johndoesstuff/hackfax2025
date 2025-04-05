@@ -1,13 +1,16 @@
-//
-
 function updateCanvasSize() {
 	const canvas = document.getElementById('canvas');
 
 	const dpr = window.devicePixelRatio || 1;
 
-	canvas.width = canvas.offsetWidth * dpr;
-	canvas.height = canvas.offsetHeight * dpr;
-	renderCanvas();
+	const rect = canvas.getBoundingClientRect();
+
+	canvas.width = rect.width * dpr;
+	canvas.height = rect.height * dpr;
+	try {
+		renderCanvas();
+	} catch (e) {}
+	console.log("updated");
 }
 
 updateCanvasSize();
