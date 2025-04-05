@@ -34,7 +34,7 @@ function toggleGraph() {
 	window.showing = GRAPH;
 }
 
-function toggleAirflow() {
+function toggleAirfoil() {
 	if (window.showing != AIRFOIL) {
 		document.getElementById("graph-container").style.display = "none";
 		document.getElementById("airfoil-container").style.display = "flex";

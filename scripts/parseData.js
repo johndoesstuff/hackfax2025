@@ -39,6 +39,7 @@ function checkOverload1() {
 		//console.log(loads);
 		serialDataStream1 = serialDataStream1.replace(loadRegex, '');
 		updateCanvasReadout(loads);
+		renderAirfoil();
 	}
 }
 
