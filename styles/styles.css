@@ -155,6 +155,16 @@ h2 {
 	flex: 1;
 }
 
+#airfoil-container {
+	display: none;
+	flex-direction: column;
+	flex: 1;
+}
+
 #canvas {
+	flex: 1;
+}
+
+#airfoil {
 	flex: 1;
 }

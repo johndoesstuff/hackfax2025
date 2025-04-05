@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="styles/styles.css" />
 	</head>
 	<body>
+		<img style="display:none" src="assets/airfoil.png" id="airfoil-img">
 		<div id="page-container">
 			<div id="header">
 				<div id="title">HackFax 2025</div>
@@ -26,6 +27,9 @@
 						<div id="graph-container">
 							<div id="readout">Current Values: X Y</div>
 							<canvas id="canvas"></canvas>
+						</div>
+						<div id="airfoil-container">
+							<canvas id="airfoil"></canvas>
 						</div>
 					</div>
 				</div>
@@ -64,6 +68,7 @@
 	<script src="scripts/ui.js"></script>
 	<script src="scripts/coloring.js"></script>
 	<script src="scripts/canvas.js"></script>
+	<script src="scripts/airfoil.js"></script>
 	<script src="scripts/readout.js"></script>
 	<script src="scripts/controls.js"></script>
 </html>
