@@ -6,6 +6,10 @@ For HackFax 2025 my team built a wind tunnel from scratch and I designed a custo
 
 ![Simulator UI](assets/readme/ui.png)
 
+## Programming Workflow
+
+![Programming Workflow](assets/readme/workflow.png)
+
 ## Physical Wind Tunnel
 
 ![Tunnel Front](assets/readme/tunnel-front.jpg)
