@@ -1,6 +1,8 @@
 window.sensorData = {
-	a: randomData(50),
-	b: randomData(50),
+	load1: [0, 0],
+	load2: [0, 0],
+	load3: [0, 0],
+	load4: [0, 0],
 };
 
 function randomData(n) {

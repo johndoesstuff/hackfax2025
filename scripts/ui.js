@@ -10,6 +10,7 @@ function updateCanvasSize() {
 	canvas.height = rect.height * dpr;
 	try {
 		renderCanvas();
+		renderAirfoil();
 	} catch (e) {}
 	console.log("updated");
 

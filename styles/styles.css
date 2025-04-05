@@ -82,7 +82,8 @@ body {
 }
 
 #control-container div {
-	padding: 0.5vw;
+	padding-top: 0.5vw;
+	padding-bottom: 0.5vw;
 	display: flex;
 	gap: 10px;
 	align-items: center;
