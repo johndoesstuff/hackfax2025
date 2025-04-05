@@ -18,8 +18,13 @@
 		<img style="display:none" src="assets/airfoil.png" id="airfoil-img">
 		<div id="page-container">
 			<div id="header">
-				<div id="title">HackFax 2025</div>
-				<div id="header-other">Wind Tunnel Simulator UI Thingy I Suppose</div>
+				<div id="logo-container">
+					<img src="assets/logo.png" id="logo">
+				</div>
+				<div id="title">
+					HackFax 2025
+				</div>
+				<div id="header-other">Crossectional Airfoil Wind Tunnel Testing UI</div>
 			</div>
 			<div id="main">
 				<div id="view-container">
@@ -37,22 +42,26 @@
 					<div style="width:100%">
 						<h2>Controls</h2>
 					</div>
-					<div>
+					<div id="connect-serial">
 						<button onclick="connectSerial()">Connect Sensor</button>
 					</div>
+					<div><h3>Profile Creation</h3></div>
 					<div>
 						<button onclick="tare()">Tare</button>
 						<button onclick="createProfile()">Create Profile</button>
 						<button onclick="uploadProfile()">Upload Profile</button>
 					</div>
+					<div><h3>Viewing Mode</h3></div>
 					<div>
 						<button onclick="toggleGraph()">Show Graph</button>
 						<button onclick="toggleAirfoil()">Show Airfoil</button>
 					</div>
+					<div><h3>Display Toggle</h3></div>
 					<div>
 						<button onclick="displaying = 0">Show Load</button>
 						<button onclick="displaying = 1">Show Windspeed</button>
 					</div>
+					<div><h3>Simulation Parameters</h3></div>
 					<div class="text-button">
 						<div><span>Angle of Attack:</span></div>
 						<div>
@@ -70,7 +79,7 @@
 				</div>
 			</div>
 			<div id="footer">
-				Some extra stuff or information could go here maybe I suppose, this looks nice enough.
+				Made for HackFax 2025 in 24 Hours by Luke Baja-Ricketts, John Best, James Hope, and Colin Jackson
 			</div>
 		</div>
 	</body>

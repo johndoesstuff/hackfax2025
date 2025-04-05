@@ -37,6 +37,17 @@ body {
 	flex: 1;
 }
 
+#logo-container {
+	width: 3.5vw;
+}
+
+#logo {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 3.5vw;
+}
+
 #footer {
 	width: auto;
 	background: var(--text);
@@ -91,6 +102,11 @@ body {
 
 h2 {
 	margin: 0;
+}
+
+h3 {
+	margin: 0;
+	margin-top: 0.5vw;
 }
 
 #control-container button {

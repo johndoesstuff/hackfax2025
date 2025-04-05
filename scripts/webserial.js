@@ -24,6 +24,7 @@ async function connectSerial() {
 		reader1 = inputStream1.getReader();
 		reader2 = inputStream2.getReader();
 
+		document.getElementById("connect-serial").style.display = "none";
 		readLoop();
 	} catch (err) {
 		console.error('Connection failed:', err);
