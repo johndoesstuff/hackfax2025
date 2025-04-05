@@ -3,6 +3,7 @@ window.sensorData = {
 	load2: [0, 0],
 	load3: [0, 0],
 	load4: [0, 0],
+	speed: [0, 0],
 };
 
 function randomData(n) {
@@ -15,6 +16,7 @@ const graphColors = {"RED":"#c74440","BLUE":"#2d70b3","GREEN":"#348543","ORANGE"
 
 let showAverage = true;
 let averageDepth = 10;
+let displaying = 0;
 
 let gridlinesRendered = false;
 
@@ -39,22 +41,34 @@ function renderCanvas() {
 
 	renderUI();
 
-	const max = Math.max(...Object.values(sensorData).flat());
+	let visibleSensors = {};
+	if (displaying == 0) {
+		visibleSensors.load1 = sensorData.load1;
+		visibleSensors.load2 = sensorData.load2;
+		visibleSensors.load3 = sensorData.load3;
+		visibleSensors.load4 = sensorData.load4;
+	} else if (displaying == 1) {
+		visibleSensors.speed = sensorData.speed;
+	}
+	
+	console.log(visibleSensors);
+
+	const max = Math.max(...Object.values(visibleSensors).flat());
 	let c = 0;
-	for (let sensor in window.sensorData) {
+	for (let sensor in visibleSensors) {
 		const color = Object.values(graphColors)[c % 6];
 		c++;
-		graphArray(window.sensorData[sensor], color, max);
+		graphArray(visibleSensors[sensor], color, max);
 	}
 
 	c = 0;
 	if (showAverage) {
 		ctx.setLineDash([5, 3]);
 		ctx.globalAlpha = 0.6;
-		for (let sensor in window.sensorData) {
+		for (let sensor in visibleSensors) {
 			const color = Object.values(graphColors)[c % 6];
 			c++;
-			graphArray(rollingAverage(window.sensorData[sensor], averageDepth), color, max);
+			graphArray(rollingAverage(visibleSensors[sensor], averageDepth), color, max);
 		}
 		ctx.setLineDash([]);
 		ctx.globalAlpha = 1;

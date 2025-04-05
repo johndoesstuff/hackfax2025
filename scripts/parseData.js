@@ -12,13 +12,15 @@ let scalars = {
 	load4: 10000,
 }
 
+let speedScalar = 1.2;
+
 let rawLoads;
 let firstOverload = true;
 
-function checkOverload() {
+function checkOverload1() {
 	let loadRegex = /Load1: (-?\d+)\r\nLoad2: (-?\d+)\r\nLoad3: (-?\d+)\r\nLoad4: (-?\d+)\r\n/;
 
-	let match = serialDataStream.match(loadRegex);
+	let match = serialDataStream1.match(loadRegex);
 
 	if (match) {
 		rawLoads = {
@@ -34,9 +36,24 @@ function checkOverload() {
 		}
 
 		let loads = normalizeLoads(rawLoads);
-		console.log(loads);
-		serialDataStream = serialDataStream.replace(loadRegex, '');
+		//console.log(loads);
+		serialDataStream1 = serialDataStream1.replace(loadRegex, '');
 		updateCanvasReadout(loads);
+	}
+}
+
+function checkOverload2() {
+	let speedRegex = /RPM: ([0-9]+\.[0-9]{2})\r\n/;
+
+	let match = serialDataStream2.match(speedRegex);
+
+	if (match) {
+		rawSpeed = parseInt(match[1]);
+
+		let speed = normalizeSpeed(rawSpeed);
+		//console.log(speed);
+		serialDataStream2 = serialDataStream2.replace(speedRegex, '');
+		updateCanvasReadout({speed});
 	}
 }
 
@@ -55,4 +72,8 @@ function normalizeLoads(loads) {
 	loads.load3 = Math.max(0, loads.load3);
 	loads.load4 = Math.max(0, loads.load4);
 	return loads;
+}
+
+function normalizeSpeed(rawSpeed) {
+	return rawSpeed * speedScalar;
 }
